@@ -1,0 +1,193 @@
+button,
+textarea,
+input {
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+div.main {
+    /* min-width: 360px; */
+    max-width: 1140px;
+    /* width: 75%; */
+    margin: auto;
+    padding: 8px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    color: #6c757d;
+    font-size: 18px;
+    margin: 5px;
+}
+
+div.root {
+    padding: 17px 15px;
+    border: 1px solid #007bff;
+    margin: auto;
+}
+
+#privlink,
+#privnote {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: .375rem .75rem;
+    font-size: 20px;
+}
+
+#privnote {
+    resize: vertical;
+}
+
+.error {
+    border: 1px solid #FF3D00 !important;
+    position: relative !important;
+    padding-right: calc(1.5em + .75rem);
+    background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.error:focus {
+    box-shadow: 0 0 0 .2rem rgb(242, 190, 190) !important;
+}
+
+#privlink {
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 1rem;
+    margin: 10px auto;
+}
+
+#privlink:focus,
+#privnote:focus,
+.secure input:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.secure {
+    display: none;
+    margin-top: 15px;
+}
+
+.secure.show {
+    display: flex;
+}
+
+.secure span {
+    padding: 10px;
+    background-color: #e9ecef;
+    color: #333;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    border-right: 0;
+}
+
+.secure input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0 5px 5px 0;
+}
+
+.btns {
+    display: flex;
+    margin-top: 15px;
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 22px;
+    padding: 10px;
+}
+
+button[disabled] {
+    cursor: not-allowed !important;
+    display: none;
+}
+
+.pass {
+    background-color: #28a745;
+    margin-right: 15px;
+}
+
+.pass:focus {
+    box-shadow: 0 0 0 .2rem rgba(72, 180, 97, 0.5);
+}
+
+.create {
+    background-color: #c82333;
+    /*margin-left: 15px;*/
+}
+
+.create:focus {
+    box-shadow: 0 0 0 .2rem rgba(225, 83, 97, 0.5);
+}
+
+.copy {
+    background-color: #ffc107;
+    margin-right: 15px;
+}
+
+.copy:focus {
+    box-shadow: 0 0 0 .2rem rgba(240, 205, 97, 0.5);
+}
+
+.read {
+    background-color: #dc3545;
+}
+
+.read:focus {
+    box-shadow: 0 0 0 .2rem rgba(253, 175, 86, 0.5);
+}
+
+.new {
+    background-color: #007bff;
+    margin-left: 15px;
+}
+
+.decrypted .new {
+    margin: 20px auto !important;
+}
+
+.new:focus {
+    box-shadow: 0 0 0 .2rem rgba(38, 143, 255, 0.5)
+}
+
+@media screen and (max-width:600px) {
+    .btns {
+        display: block;
+        margin-top: 7px;
+    }
+    button {
+        margin: 8px 0 !important;
+    }
+    div.root {
+        margin: auto;
+    }
+}
+
+p.dec {
+    text-align: center;
+    border-bottom: 1px solid #ced4da;
+    padding: 15px;
+}
+
+.privmsg {
+    margin-top: 15px;
+    white-space: pre-wrap;
+    color: #6c757d !important;
+}

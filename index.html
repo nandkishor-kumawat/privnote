@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private secure notes</title>
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function validcheck() {
+            var privnote = document.getElementById("privnote");
+            var password = document.querySelector('.secure input');
+            var pass = document.querySelector('#pass');
+
+            if (privnote.value == "") {
+                privnote.classList.add('error');
+                privnote.focus();
+                privnote.setAttribute('oninput', 'remove(this)');
+            } else if ((pass.checked && password.value == "")) {
+                password.classList.add('error');
+                password.focus();
+                password.setAttribute('oninput', 'remove(this)');
+            } else {
+                sendData();
+            }
+            return false;
+        }
+
+        function sendData() {
+            var note = document.querySelector('.note');
+            var result = document.querySelector('#result');
+
+            result.innerHTML = '<section><span class="loader-11"></span></section>';
+            var data = new FormData();
+            data.append("privmsg", privnote.value);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "create.php");
+
+            xhr.send(data);
+            xhr.onload = function () {
+                // console.log(this.response);
+                result.innerHTML = "";
+                note.innerHTML = this.response;
+            };
+            return false;
+        }
+    </script>
+
+</head>
+
+<body><noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="main">
+        <h1>Private secure notes</h1>
+        <div class="root">
+            <form onsubmit="validcheck();">
+                <div class="note">
+                    <p>Enter text message to encrypt</p>
+                    <textarea name="privmsg" id="privnote" rows="6" spellcheck="false"
+                        oninput="remove(this)"></textarea>
+
+                    <div class="secure">
+                        <span>Password</span>
+                        <input type="text" placeholder="Optional password to increase security" />
+                    </div>
+                    <div class="btns">
+                        <button type="button" class="pass" disabled>Password</button>
+                        <button type="submit" class="create">Encrypt message</button>
+                    </div>
+                </div>
+            </form>
+            <div id="result"></div>
+ 
+        </div>
+    </div> <input type="checkbox" name="pass" id="pass" style="display: none;">
+
+
+    <script>
+        document.querySelector('.btns .pass').addEventListener('click', () => {
+            // document.querySelector('.secure').classList.toggle('show');
+            document.querySelector('#pass').click();
+            showPass();
+
+        });
+
+        function showPass() {
+            if (document.querySelector('#pass').checked) {
+                document.querySelector('.secure').style.display = 'flex';
+                document.querySelector('.pass').innerHTML = 'Remove Password';
+            } else {
+                document.querySelector('.secure').style.display = 'none';
+                document.querySelector('.pass').innerHTML = 'Set Password';
+            }
+        }
+        showPass();
+
+        function copylink() {
+            document.querySelector('#privlink').select();
+            document.execCommand('copy');
+        };
+
+        function remove(e) {
+            e.classList.remove('error');
+            e.removeAttribute('oninput');
+        };
+    </script>
+</body>
+
+
+</html>
